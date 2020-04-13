@@ -1,14 +1,17 @@
 import requests
-import time
 
-count = 0
-TMcount = 1
-f = open("find.txt", "r")
-for i in f:
-    # wFile = requests.get("https://www1.tipo.gov.tw/" + url, allow_redirects=True)
-    # wget.download("https://www1.tipo.gov.tw/" + i, './' + str (TMcount) + '.pdf')
-    # TMcount += 1
-    file = requests.get(i, allow_redirects=True)
-    open('./PDF' + str(TMcount) + ".pdf", 'wb').write(file.content)
-    TMcount += 1
+f = open("./find.txt", "r")
+df = open("./find_filter.txt", "w")
+
+TMCount = 1
+
+for url in f:
+    url = url.rstrip("\n")
+    rs = requests.get(url)
+    if (rs.headers['content-type'] != "text/html; Charset=utf-8"):
+        with open('./Trade' + str(TMCount) + ".pdf", 'wb') as wf:
+            wf.write(rs.content)
+        TMCount += 1
+    else:
+        df.write(url + "\n")
 f.close()
