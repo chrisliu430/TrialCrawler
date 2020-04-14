@@ -1,6 +1,6 @@
 import requests
 
-f = open("./find.txt", "r")
+f = open("./test.txt", "r")
 df = open("./find_filter.txt", "w")
 
 TMCount = 1
@@ -9,7 +9,7 @@ for url in f:
     url = url.rstrip("\n")
     rs = requests.get(url)
     if (rs.headers['content-type'] != "text/html; Charset=utf-8"):
-        with open('./Trade' + str(TMCount) + ".pdf", 'wb') as wf:
+        with open('./Patent' + str(TMCount) + ".pdf", 'wb') as wf:
             wf.write(rs.content)
         TMCount += 1
     else:

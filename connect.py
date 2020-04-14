@@ -14,8 +14,8 @@ def writeLink(sUrl):
 
 def twoHundred():
     global total
-    while (total < 10):
-        url = 'https://www1.tipo.gov.tw/lp.asp?ctNode=7076&CtUnit=3515&BaseDSD=7&mp=1'
+    while (total < 160):
+        url = 'https://www1.tipo.gov.tw/lp.asp?CtNode=7199&CtUnit=3259&BaseDSD=7&mp=1'
         if (total >= 10):
             nPage = total // 10 + 1
             url = url + "&nowPage=" + str(nPage) + "&pagesize=10"
